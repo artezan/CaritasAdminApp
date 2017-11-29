@@ -1,0 +1,96 @@
+<!--
+  Generated template for the ArticuloNuevoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+
+  <ion-navbar color="primary">
+    <ion-title>ArticuloNuevo</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+<ion-grid>
+<ion-card>
+
+  <ion-item>
+    <ion-avatar item-start>
+    <button ion-fab mini>
+      <ion-icon name="add"></ion-icon>
+    </button>
+    </ion-avatar>
+    <h2>Agregar Nuevo Registro</h2>
+    <p>Llenar todos los campos</p>
+  </ion-item>
+  <ion-card-content>
+ <ion-card-content>
+      <ion-row>
+    <ion-list >
+<ion-col>
+   <ion-item>
+    <ion-label floating >Estado</ion-label>
+
+    
+    <ion-select [(ngModel)]="estado" name="estado" interface="popover" >
+      <ion-option *ngFor="let item of tipo" [value]="item.estado"   >
+      {{ item.estado}}
+      </ion-option>
+    </ion-select>
+  </ion-item>
+</ion-col>
+<ion-col>
+    <ion-item>
+    <ion-label floating >Nombre </ion-label>
+    <ion-input  [(ngModel)]="nombre" type="text" ></ion-input>
+  </ion-item>
+</ion-col>
+<ion-col>
+
+    <ion-item>
+    <ion-label floating  >Descripcion </ion-label>
+    <ion-input  [(ngModel)]="des" type="text" ></ion-input>
+  </ion-item>
+</ion-col>
+<ion-col>
+
+    <ion-item>
+    <ion-label floating  >Foto </ion-label>
+    <ion-input  [(ngModel)]="foto" type="text" ></ion-input>
+  </ion-item>
+</ion-col>
+<ion-col>
+
+    <ion-item>
+    <ion-label floating  >Categoria </ion-label>
+    <ion-input  [(ngModel)]="categoria" type="text" ></ion-input>
+  </ion-item>
+</ion-col>
+<ion-col>
+
+    <ion-item>
+    <ion-label floating  >Cantidad </ion-label>
+    <ion-input  [(ngModel)]="cantidad" type="number" ></ion-input>
+  </ion-item>
+</ion-col>
+
+</ion-list>
+</ion-row>
+  
+  </ion-card-content>
+    <ion-row no-padding>
+  <ion-col text-left>
+    <button ion-button clear small color="secondary" icon-start (click)="agregar()">
+      <ion-icon name='add'></ion-icon>
+     Agregar
+    </button>
+  </ion-col>
+</ion-row>
+</ion-card-content>
+</ion-card>
+</ion-grid>
+
+</ion-content>

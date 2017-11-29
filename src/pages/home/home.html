@@ -1,18 +1,118 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
+      <ion-icon name="menu"></ion-icon> 
     </button>
-    <ion-title>Home</ion-title>
+  
+   
+    <ion-title>Administrador</ion-title>
   </ion-navbar>
+  <ion-toolbar  no-border-top color="primary" color="light">
+
+  <ion-segment [(ngModel)]="estado">
+    <ion-segment-button value="recibir" >
+      Recibir
+    </ion-segment-button>
+    <ion-segment-button value="dar">
+     Donar
+    </ion-segment-button>
+  </ion-segment>
+      
+  </ion-toolbar>
 </ion-header>
 
+
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <ion-grid fixed>
+  
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  
+
+  <div [ngSwitch]="estado">
+<div *ngSwitchCase="'recibir'">
+<ion-grid> 
+  <ion-chip color="primary">
+    <ion-label>
+   Articulos en Caritas
+    </ion-label>  
+  </ion-chip>
+</ion-grid>
+<ion-list class = "w3-card-4" >
+  <ion-item-sliding *ngFor="let item of articulos_r">
+  <ion-item >
+    <ion-avatar item-start>
+      <img src="assets/search.png" height="50%" >
+    </ion-avatar>
+    <b>
+      {{item.nombre}}
+    </b>
+    <p>
+        {{item.categoria}}
+      </p>
+      <p>
+      Cantidad  {{item.cantidad}}
+      </p>
+    <ion-note item-end>
+
+      Visitas
+    </ion-note>
+    <ion-badge item-end>
+        {{item.visitas}}
+    </ion-badge>
+  </ion-item>
+
+   <ion-item-options side="right">
+      <button ion-button (click)="editar(item)"><ion-icon name="create"></ion-icon>Editar</button>
+      <button ion-button color="danger" (click)="removeItemRecibir(item.key)"><ion-icon name="remove-circle"></ion-icon>Borrar</button>
+    </ion-item-options>
+</ion-item-sliding>
+</ion-list>
+ 
+</div>
+
+<div *ngSwitchCase="'dar'">
+<ion-grid> 
+  <ion-chip color="primary">
+    <ion-label>
+   Articulos  que Necesita Caritas
+    </ion-label>  
+  </ion-chip>
+</ion-grid>
+<ion-list class = "w3-card-4" >
+  <ion-item-sliding *ngFor="let item of articulos_d">
+  <ion-item >
+    <ion-avatar item-start>
+      <img src="assets/notepad.png" height="50%" >
+    </ion-avatar>
+    <b>
+      {{item.nombre}}
+    </b>
+    <p>
+        {{item.categoria}}
+      </p>
+      <p>
+      Cantidad  {{item.cantidad}}
+      </p>
+    <h2 item-end>
+      Visitas
+    </h2>
+    <ion-badge item-end>
+        {{item.visitas}}
+    </ion-badge>
+  </ion-item>
+   <ion-item-options side="right">
+      <button ion-button (click)="editar(item)"><ion-icon name="create"></ion-icon>Editar</button>
+      <button ion-button color="danger" (click)="removeItemDar(item.key)"><ion-icon name="remove-circle"></ion-icon>Borrar</button>
+    </ion-item-options>
+</ion-item-sliding>
+</ion-list>
+</div>
+</div>
+
+  </ion-grid>
+  <ion-fab bottom right  >
+  <button ion-fab (click)="nuevo()" ><ion-icon name="add"></ion-icon></button>
+</ion-fab>
+
 </ion-content>
