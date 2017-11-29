@@ -28,7 +28,7 @@ export class HomePage {
 
     this.afd.list('/articulos/').push(
     {
-      nombre:'Medicamento Especial',
+      nombre:'',
       visitas:0,
       estado:'recibir',
       categoria:'Medicina',
